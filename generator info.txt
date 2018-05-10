@@ -1,0 +1,5 @@
+cd server 
+npm run watch
+babel-node index.js
+
+ng build --output-path=../client --watch

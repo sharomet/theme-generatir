@@ -3,13 +3,14 @@ import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import cssnano from 'gulp-cssnano';
 import rename from 'gulp-rename';
+import path from 'path';
 
 class EditController {
 
-	pathToCss = '../client/assets/css/';
+	pathToCss = path.join(__dirname, '../assets/themes/css/');
 
 	createTheme() {
-		gulp.src('../client/assets/scss/theme.scss')
+		gulp.src(path.join('../assets/scss/theme.scss'))
 			.pipe(sass())
 			.pipe(autoprefixer(['last 15 versions', '>1%', 'ie 8', 'ie 7']))
 			.pipe(gulp.dest(this.pathToCss));

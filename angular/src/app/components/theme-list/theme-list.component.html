@@ -1,0 +1,5 @@
+<ul class="list-group list-group-flush">
+	<li *ngFor="let theme of themes" class="list-group-item">
+		<a routerLink="/edit/{{ theme.id }}">{{ theme.name }}</a>
+	</li>
+</ul>
