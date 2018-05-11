@@ -7,10 +7,10 @@ import path from 'path';
 
 class EditController {
 
-	pathToCss = path.join(__dirname, '../assets/themes/css/');
+	pathToCss = path.join(__dirname, '../assets/themes/3e92be74-1ba9-237d-95cf-e8a0beddfe65/');
 
 	createTheme() {
-		gulp.src(path.join('../assets/scss/theme.scss'))
+		gulp.src(path.join('./assets/scss/theme.scss'))
 			.pipe(sass())
 			.pipe(autoprefixer(['last 15 versions', '>1%', 'ie 8', 'ie 7']))
 			.pipe(gulp.dest(this.pathToCss));

@@ -24,12 +24,6 @@ app.use(express.static(path.join(__dirname, '../client/')));
 app.use(bodyParser.json());
 
 /**
-* Include Edit controler
-*/
-/*const edit = new EditController();
-edit.createTheme();*/
-
-/**
 * Routing
 */
 app.use('/api', router);
