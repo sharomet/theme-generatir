@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+import 'rxjs/add/operator/map';
 
 import { Themes } from '../models/themes';
 
@@ -7,19 +11,21 @@ import { Themes } from '../models/themes';
 export class ThemeListService {
 
 	private apiUrl = '/api/home';
+	private buildUrl = '/api/build';
+	private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-	themes:Themes[] = [];
+	constructor(private http: HttpClient) {}
 
-	constructor(private http: Http) {}
+	public getAllThemes(): Observable<Themes[]> {
+		return this.http.get<Themes[]>(this.apiUrl)
+						.pipe(catchError(this.handleError));
+	}
 
-	getAllThemes(): Promise<Themes[]> {
-    return this.http.get(this.apiUrl)
-                    .toPromise()
-                    .then(res => res.json())
-                    .then(themes => this.themes = themes)
-                    .catch(this.handleError);
-
-  	}
+	public buildTheme(id: any) {
+		return this.http.post<Themes>(this.buildUrl, id, {headers: this.headers}).pipe(
+			catchError(this.handleError)
+		);
+	}
 
 	private handleError (error: any) {
 		console.error('An error occurred', error);

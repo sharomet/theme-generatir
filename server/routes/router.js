@@ -4,10 +4,7 @@ import EditController from '../controllers/EditController.js';
 
 const router = express.Router();
 
-router.get('/create', (req, res) => {
-	let create = new EditController();
-	res.send(create.createTheme());
-});
+router.post('/build', EditController.buildTheme);
 
 router.get('/home', HomeController.getAllThemes);
 

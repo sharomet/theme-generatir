@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, '../client/')));
 * Body Parser init
 */
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
 * Routing
@@ -32,7 +33,7 @@ app.use('/api', router);
  * View Engine
  */
 app.use('*', (req, res) => {
-    res.sendFile(path.join('../client/index.html'));
+    res.sendFile(__dirname, path.join('../client/index.html'));
 });
 
 /**

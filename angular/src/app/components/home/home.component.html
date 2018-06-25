@@ -1,11 +1,18 @@
-<div id="wrapper" class="container-fluid h-100">
+<div [ngClass]="messageClass" *ngIf="message" class="alert" role="alert">
+	{{ message }}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+
+<div id="wrapper" class="container-fluid h-100" >
 	<div class="row h-100">
 
 		<aside class="col-lg-3 col-md-4 pr-md-1 h-100">
 			<div class="card h-100">
 				<div class="card-header bg-primary text-white">Themes</div>
 
-				<app-theme-list></app-theme-list>
+				<app-theme-list (setMessage)="setMessage($event)" (setMessageClass)="setMessageClass($event)"></app-theme-list>
 
 			</div>
 

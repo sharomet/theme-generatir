@@ -111,7 +111,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-var http_1 = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var app_routing_module_1 = __webpack_require__("./src/app/app-routing.module.ts");
 var theme_list_service_1 = __webpack_require__("./src/app/services/theme-list.service.ts");
 var app_component_1 = __webpack_require__("./src/app/app.component.ts");
@@ -129,7 +129,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 platform_browser_1.BrowserModule,
-                http_1.HttpModule,
+                http_1.HttpClientModule,
                 app_routing_module_1.AppRoutingModule
             ],
             providers: [
@@ -155,7 +155,7 @@ module.exports = ""
 /***/ "./src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"wrapper\" class=\"container-fluid h-100\">\n\t<div class=\"row h-100\">\n\n\t\t<aside class=\"col-lg-3 col-md-4 pr-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white\">Themes</div>\n\n\t\t\t\t<app-theme-list></app-theme-list>\n\n\t\t\t</div>\n\n\t\t</aside>\n\n\t\t<main class=\"col-lg-9 col-md-8 pl-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white\">Preview</div>\n\t\t\t\t\n\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\tMain\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</main>\n\n\t</div>\n</div>"
+module.exports = "<div [ngClass]=\"messageClass\" *ngIf=\"message\" class=\"alert\" role=\"alert\">\n\t{{ message }}\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n\t\t<span aria-hidden=\"true\">&times;</span>\n\t</button>\n</div>\n\n<div id=\"wrapper\" class=\"container-fluid h-100\" >\n\t<div class=\"row h-100\">\n\n\t\t<aside class=\"col-lg-3 col-md-4 pr-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white\">Themes</div>\n\n\t\t\t\t<app-theme-list (setMessage)=\"setMessage($event)\" (setMessageClass)=\"setMessageClass($event)\"></app-theme-list>\n\n\t\t\t</div>\n\n\t\t</aside>\n\n\t\t<main class=\"col-lg-9 col-md-8 pl-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white\">Preview</div>\n\t\t\t\t\n\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\tMain\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</main>\n\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -178,6 +178,12 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
     }
+    HomeComponent.prototype.setMessage = function (message) {
+        this.message = message;
+    };
+    HomeComponent.prototype.setMessageClass = function (messageClass) {
+        this.messageClass = messageClass;
+    };
     HomeComponent.prototype.ngOnInit = function () {
     };
     HomeComponent = __decorate([
@@ -205,7 +211,7 @@ module.exports = ""
 /***/ "./src/app/components/theme-list/theme-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"list-group list-group-flush\">\n\t<li *ngFor=\"let theme of themes\" class=\"list-group-item\">\n\t\t<a routerLink=\"/edit/{{ theme.id }}\">{{ theme.name }}</a>\n\t</li>\n</ul>"
+module.exports = "<ul class=\"list-group list-group-flush\">\n\t<li *ngFor=\"let theme of themes\" class=\"list-group-item justify-content-between d-flex\">\n\t\t<a routerLink=\"/edit/{{ theme.id }}\">{{ theme.name }}</a>\n\n\t\t<div>\n\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"buildTheme(theme.id)\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Build\">\n\t\t\t\t<i class=\"fas fa-cogs\"></i>\n\t\t\t</button>\n\t\t\t<a class=\"btn btn-primary btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Edit\">\n\t\t\t\t<i class=\"fas fa-pencil-alt\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-success btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Copy\">\n\t\t\t\t<i class=\"far fa-copy\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-danger btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Delete\">\n\t\t\t\t<i class=\"far fa-trash-alt\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-warning btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Generate\">\n\t\t\t\t<i class=\"fas fa-check\"></i>\n\t\t\t</a>\n\t\t</div>\n\t</li>\n</ul>"
 
 /***/ }),
 
@@ -229,11 +235,35 @@ var theme_list_service_1 = __webpack_require__("./src/app/services/theme-list.se
 var ThemeListComponent = /** @class */ (function () {
     function ThemeListComponent(themeListService) {
         this.themeListService = themeListService;
+        this.setMessage = new core_1.EventEmitter();
+        this.setMessageClass = new core_1.EventEmitter();
     }
     ThemeListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.themeListService.getAllThemes().then(function (themes) { return _this.themes = themes; });
+        this.themeListService.getAllThemes().subscribe(function (themes) { return _this.themes = themes; });
     };
+    ThemeListComponent.prototype.buildTheme = function (id) {
+        var _this = this;
+        var themeId = { id: id };
+        this.themeListService.buildTheme(themeId).subscribe(function (data) {
+            if (data.message == 'success') {
+                _this.setMessage.emit('Success! User Added.');
+                _this.setMessageClass.emit('alert-success');
+            }
+            else {
+                _this.setMessage.emit('Error!');
+                _this.setMessageClass.emit('alert-danger');
+            }
+        });
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ThemeListComponent.prototype, "setMessage", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ThemeListComponent.prototype, "setMessageClass", void 0);
     ThemeListComponent = __decorate([
         core_1.Component({
             selector: 'app-theme-list',
@@ -265,20 +295,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-var http_1 = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var operators_1 = __webpack_require__("./node_modules/rxjs/_esm5/operators.js");
+__webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var ThemeListService = /** @class */ (function () {
     function ThemeListService(http) {
         this.http = http;
         this.apiUrl = '/api/home';
-        this.themes = [];
+        this.buildUrl = '/api/build';
+        this.headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
     }
     ThemeListService.prototype.getAllThemes = function () {
-        var _this = this;
         return this.http.get(this.apiUrl)
-            .toPromise()
-            .then(function (res) { return res.json(); })
-            .then(function (themes) { return _this.themes = themes; })
-            .catch(this.handleError);
+            .pipe(operators_1.catchError(this.handleError));
+    };
+    ThemeListService.prototype.buildTheme = function (id) {
+        return this.http.post(this.buildUrl, id, { headers: this.headers }).pipe(operators_1.catchError(this.handleError));
     };
     ThemeListService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
@@ -286,7 +318,7 @@ var ThemeListService = /** @class */ (function () {
     };
     ThemeListService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http])
+        __metadata("design:paramtypes", [http_1.HttpClient])
     ], ThemeListService);
     return ThemeListService;
 }());

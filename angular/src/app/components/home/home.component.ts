@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private messageClass;
+  private message;
+
+  constructor() {
+    
+  }
+  
+  setMessage(message: String) {
+    this.message = message;
+  }
+  setMessageClass(messageClass: String) {
+    this.messageClass = messageClass;
+  }
 
   ngOnInit() {
+
   }
 
 }
