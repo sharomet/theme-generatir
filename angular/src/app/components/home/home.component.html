@@ -5,14 +5,41 @@
 	</button>
 </div>
 
-<div id="wrapper" class="container-fluid h-100" >
+<div id="wrapper" class="container-fluid h-100">
 	<div class="row h-100">
 
 		<aside class="col-lg-3 col-md-4 pr-md-1 h-100">
 			<div class="card h-100">
-				<div class="card-header bg-primary text-white">Themes</div>
+				<div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
+					<span>Themes</span>
+					<button (click)="open(content)" class="btn btn-success btn-sm" data-tooltip="tooltip" data-placement="left"
+					 title="Create">
+						<i class="fas fa-plus"></i>
+					</button>
+				</div>
 
-				<app-theme-list (setMessage)="setMessage($event)" (setMessageClass)="setMessageClass($event)"></app-theme-list>
+				<ul class="list-group list-group-flush">
+					<li *ngFor="let theme of themes" class="list-group-item justify-content-between d-flex">
+						<a routerLink="/edit/{{ theme.id }}">{{ theme.name }}</a>
+						<div>
+							<button class="btn btn-primary btn-sm" (click)="buildTheme(theme.id)" data-tooltip="tooltip" data-placement="left" title="Build">
+								<i class="fas fa-cogs"></i>
+							</button>
+							<a class="btn btn-primary btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Edit">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+							<a class="btn btn-success btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Copy">
+								<i class="far fa-copy"></i>
+							</a>
+							<a class="btn btn-danger btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Delete">
+								<i class="far fa-trash-alt"></i>
+							</a>
+							<a class="btn btn-warning btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Generate">
+								<i class="fas fa-check"></i>
+							</a>
+						</div>
+					</li>
+				</ul>
 
 			</div>
 
@@ -21,7 +48,7 @@
 		<main class="col-lg-9 col-md-8 pl-md-1 h-100">
 			<div class="card h-100">
 				<div class="card-header bg-primary text-white">Preview</div>
-				
+
 				<div class="card-body">
 					Main
 				</div>
@@ -31,3 +58,52 @@
 
 	</div>
 </div>
+
+<div class="modal fade" id="createTheme" tabindex="-1" role="dialog" aria-labelledby="createTheme" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header text-white bg-primary p-2">
+				Create new Theme
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form (ngSubmit)="createTheme()">
+				<div class="modal-body p-2">
+					<div class="form-group mb-0">
+						<label for="newThemeName">Theme Name</label>
+						<input type="text" id="newThemeName" class="form-control" [(ngModel)]="themeName" name="themeName">
+					</div>
+				</div>
+				<div class="modal-footer p-2">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-content">
+		<div class="modal-header text-white bg-primary p-2">
+			Create new Theme
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<form (ngSubmit)="createTheme()">
+			<div class="modal-body p-2">
+				<div class="form-group mb-0">
+					<label for="newThemeName">Theme Name</label>
+					<input type="text" id="newThemeName" class="form-control" [(ngModel)]="themeName" name="themeName">
+				</div>
+			</div>
+			<div class="modal-footer p-2">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">Close</button>
+				<button type="submit" class="btn btn-primary">Create</button>
+			</div>
+		</form>
+	</div>
+</ng-template>

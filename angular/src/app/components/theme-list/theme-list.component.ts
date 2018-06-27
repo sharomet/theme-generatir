@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
-import { ThemeListService } from '../../services/theme-list.service';
+import { ThemeService } from '../../services/theme.service';
 
 import { Themes } from '../../models/themes';
 
@@ -11,22 +11,29 @@ import { Themes } from '../../models/themes';
 })
 export class ThemeListComponent implements OnInit {
 
-	public themes: Themes[];
+	public themes: Themes[] = [];
 
 	@Output() setMessage = new EventEmitter();
 	@Output() setMessageClass = new EventEmitter();
+	@Input() themeInput;
 
-	constructor(private themeListService: ThemeListService) {}
-
-	ngOnInit() {
-		this.themeListService.getAllThemes().subscribe(themes => this.themes = themes);
+	constructor(private themeService: ThemeService) {
+		this.themeService.getAllThemes().subscribe(themes => {
+			this.themes = themes;
+		});
 	}
 
-	buildTheme(id: any) {
-		const themeId = {id: id};
+	ngOnInit() {
+		this.themes.push(this.themeInput);
+		console.log(this.themeInput);
+	}
 
-		this.themeListService.buildTheme(themeId).subscribe((data: any) => {
-			if(data.message == 'success') {
+	/**
+	 * Build Theme
+	 */
+	buildTheme(id: any) {
+		this.themeService.buildTheme({id: id}).subscribe((data: any) => {
+				if(data.message == 'success') {
 					this.setMessage.emit('Success! User Added.');
 					this.setMessageClass.emit('alert-success');
 				} else {
@@ -35,5 +42,4 @@ export class ThemeListComponent implements OnInit {
 				}
 			});
 	}
-
 }

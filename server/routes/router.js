@@ -8,4 +8,6 @@ router.post('/build', EditController.buildTheme);
 
 router.get('/home', HomeController.getAllThemes);
 
-module.exports = router;
+router.post('/create', HomeController.createTheme);
+
+export default router;

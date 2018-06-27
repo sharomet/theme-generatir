@@ -2,10 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import router from './routes/router.js'
-import EditController from './controllers/EditController.js';
-
-import guid from 'guid';
-import fs from 'fs';
 
 /**
 * Express Init
@@ -16,7 +12,6 @@ const app = express();
  * Set static folder
  */
 app.use(express.static(path.join(__dirname, '../client/')));
-//console.log(guid.create().value);
 
 /**
 * Body Parser init
