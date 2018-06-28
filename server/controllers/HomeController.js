@@ -13,6 +13,7 @@ exports.getAllThemes = (req, res) => {
 };
 
 exports.createTheme = (req, res) => {
+
     let pathFolder = path.join('./assets/themes/');
     let copyTheme = 'defaultTheme';
     let id = guid.create().value;
@@ -31,6 +32,13 @@ exports.createTheme = (req, res) => {
     };
 
     jsonFile.push(theme);
+
+    res.send({
+        message: 'success',
+        id: id,
+        name: name,
+        copy: copy
+    });
 
     fs.writeFile(pathToJson, JSON.stringify(jsonFile), (err) => {
         if(err){
