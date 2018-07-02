@@ -68,15 +68,16 @@ export class HomeComponent implements OnInit {
    * Delete Theme
    */
   deleteTheme(id: any) {
-    this.themeService.deleteTheme({id: id})
+    this.themeService.deleteTheme(id)
                      .subscribe((data: any) => {
                        console.log(data);
-                      if(data.message == 'success'){
-                        this.message = 'Theme Deleted!'
-                        this.messageClass = 'alert-success';
-                      } else {
+                      if(data.message == 'error'){
                         this.message = 'Error!';
                         this.messageClass = 'alert-danger';
+                      } else {
+                        this.message = 'Theme Deleted!'
+                        this.messageClass = 'alert-success';
+                        this.themes = data;
                       }
                      });
   }

@@ -287,16 +287,17 @@ var HomeComponent = /** @class */ (function () {
      */
     HomeComponent.prototype.deleteTheme = function (id) {
         var _this = this;
-        this.themeService.deleteTheme({ id: id })
+        this.themeService.deleteTheme(id)
             .subscribe(function (data) {
             console.log(data);
-            if (data.message == 'success') {
-                _this.message = 'Theme Deleted!';
-                _this.messageClass = 'alert-success';
-            }
-            else {
+            if (data.message == 'error') {
                 _this.message = 'Error!';
                 _this.messageClass = 'alert-danger';
+            }
+            else {
+                _this.message = 'Theme Deleted!';
+                _this.messageClass = 'alert-success';
+                _this.themes = data;
             }
         });
     };
@@ -436,7 +437,7 @@ var ThemeService = /** @class */ (function () {
         this.apiUrl = '/api/home';
         this.buildUrl = '/api/build';
         this.createUrl = '/api/create';
-        this.deleteUrl = '/api/create';
+        this.deleteUrl = '/api/delete/';
         this.headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
     }
     /**
@@ -465,7 +466,7 @@ var ThemeService = /** @class */ (function () {
      * Delete Theme
      */
     ThemeService.prototype.deleteTheme = function (id) {
-        return this.http.post(this.deleteUrl, id, { headers: this.headers })
+        return this.http.post(this.deleteUrl + id, { headers: this.headers })
             .pipe(operators_1.catchError(this.handleError));
     };
     ThemeService.prototype.handleError = function (error) {

@@ -12,11 +12,15 @@ router.get('/home', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    themes.createTheme(req, res);
+    themes.createTheme(req.body.name, (result) => {
+        res.send(result);
+    });
 });
 
-router.post('/delete', (req, res) => {
-    themes.deleteTheme();
+router.post('/delete/:id', (req, res) => {
+    themes.deleteTheme(req.params.id, (result) => {
+        res.send(result);
+    });
 });
 
 /*router.post('/build', EditController.buildTheme);

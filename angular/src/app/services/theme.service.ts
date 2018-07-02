@@ -13,7 +13,7 @@ export class ThemeService {
 	private apiUrl = '/api/home';
 	private buildUrl = '/api/build';
 	private createUrl = '/api/create';
-	private deleteUrl = '/api/create';
+	private deleteUrl = '/api/delete/';
 	private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
 	constructor(private http: HttpClient) {}
@@ -46,7 +46,7 @@ export class ThemeService {
 	 * Delete Theme
 	 */
 	public deleteTheme(id: any) {
-		return this.http.post(this.deleteUrl, id, {headers: this.headers})
+		return this.http.post(this.deleteUrl + id, {headers: this.headers})
 						.pipe(catchError(this.handleError));
 	}
 

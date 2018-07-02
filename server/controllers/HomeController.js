@@ -12,7 +12,7 @@ ncp.limit = 16;
 
 // exports.createTheme = (req, res) => {
 
-//     let pathFolder = path.join('./assets/themes/');
+//     let pathToThemes = path.join('./assets/themes/');
 //     let copyTheme = 'defaultTheme';
 //     let id = guid.create().value;
 //     let name = req.body.name.trim();
@@ -38,7 +38,7 @@ ncp.limit = 16;
 //                 'message': 'error'
 //             });
 //         } else {
-//             ncp(pathFolder + copyTheme, pathFolder + id, (err) => {
+//             ncp(pathToThemes + copyTheme, pathToThemes + id, (err) => {
 //                 if (err) {
 //                     res.send({'message': 'error'});
 //                 } else {
@@ -60,48 +60,72 @@ ncp.limit = 16;
 // }
 
 export default class Home {
-    
+
     constructor() {
         this.pathToJson = path.join('./assets/themes/themes.json');
-        this.jsonFile = JSON.parse(fs.readFileSync(this.pathToJson, 'utf8'));
+        //this.jsonFile = JSON.parse(fs.readFileSync(this.pathToJson, 'utf8'));
+        this.pathToThemes = path.join('./assets/themes/');
     }
 
     getAllThemes() {
-        return JSON.parse(fs.readFileSync(this.pathToJson, 'utf8'));
+        return this.getThemes();
     }
 
-    createTheme(req, res) {
-        let pathFolder = path.join('./assets/themes/');
+    createTheme(name, callback) {
         let copyTheme = 'defaultTheme';
         let id = guid.create().value;
         let copy = false;
-        let theme = [];
-        let jsonData = JSON.parse(fs.readFileSync(this.pathToJson, 'utf8'));
+        let jsonData = this.getThemes();
 
-        theme = {
+        let theme = {
             id: id,
-            name: req.body.name,
+            name: name,
             copy: copy
         };
 
         jsonData.push(theme);
 
-        fs.writeFile(this.pathToJson, JSON.stringify(jsonData), (err) => {
-            if(err) {
-                res.send({'message': 'error'});
+        this.saveJsonFile(jsonData, (result) => {
+            if(!result) {
+                callback({'message': 'error'});
             } else {
-                ncp(pathFolder + copyTheme, pathFolder + id, (err) => {
+                ncp(this.pathToThemes + copyTheme, this.pathToThemes + id, (err) => {
                     if(err) {
-                        res.send({'message': 'error'});
+                        callback({'message': 'error'});
                     }
-                    res.send(theme);
+                    callback(theme);
                 });
             }
         });
     }
 
-    /*deleteTheme(id) {
+    deleteTheme(id, callback) {
+        let data = this.getThemes();
+        let filtered = data.filter(function(item) { 
+            return item.id !== id; 
+        });
 
-    }*/
+        this.saveJsonFile(filtered, (result) => {
+            if(result) {
+                callback(filtered);
+            } else {
+                callback({'message': 'error'});
+            }
+        })
+    }
+
+    saveJsonFile(data, callback) {
+        fs.writeFile(this.pathToJson, JSON.stringify(data), (err) => {
+            if(err) {
+                callback(false);
+            } else {
+                callback(true);
+            }
+        });
+    }
+
+    getThemes() {
+        return JSON.parse(fs.readFileSync(this.pathToJson, 'utf8'))
+    }
 
 }
