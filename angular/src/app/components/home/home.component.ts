@@ -63,6 +63,23 @@ export class HomeComponent implements OnInit {
                       }
 			              });
   }
+
+  /**
+   * Delete Theme
+   */
+  deleteTheme(id: any) {
+    this.themeService.deleteTheme({id: id})
+                     .subscribe((data: any) => {
+                       console.log(data);
+                      if(data.message == 'success'){
+                        this.message = 'Theme Deleted!'
+                        this.messageClass = 'alert-success';
+                      } else {
+                        this.message = 'Error!';
+                        this.messageClass = 'alert-danger';
+                      }
+                     });
+  }
   
   /**
    * Open Modal

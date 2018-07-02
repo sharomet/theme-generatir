@@ -211,7 +211,7 @@ module.exports = ""
 /***/ "./src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [ngClass]=\"messageClass\" *ngIf=\"message\" class=\"alert\" role=\"alert\">\n\t{{ message }}\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n\t\t<span aria-hidden=\"true\">&times;</span>\n\t</button>\n</div>\n\n<div id=\"wrapper\" class=\"container-fluid h-100\">\n\t<div class=\"row h-100\">\n\n\t\t<aside class=\"col-lg-3 col-md-4 pr-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white d-flex align-items-center justify-content-between\">\n\t\t\t\t\t<span>Themes</span>\n\t\t\t\t\t<button (click)=\"open(content)\" class=\"btn btn-success btn-sm\" data-tooltip=\"tooltip\" data-placement=\"left\"\n\t\t\t\t\t title=\"Create\">\n\t\t\t\t\t\t<i class=\"fas fa-plus\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\n\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t<li *ngFor=\"let theme of themes\" class=\"list-group-item justify-content-between d-flex\">\n\t\t\t\t\t\t<a routerLink=\"/edit/{{ theme.id }}\">{{ theme.name }}</a>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"buildTheme(theme.id)\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Build\">\n\t\t\t\t\t\t\t\t<i class=\"fas fa-cogs\"></i>\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t<a class=\"btn btn-primary btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Edit\">\n\t\t\t\t\t\t\t\t<i class=\"fas fa-pencil-alt\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<a class=\"btn btn-success btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Copy\">\n\t\t\t\t\t\t\t\t<i class=\"far fa-copy\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<a class=\"btn btn-danger btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Delete\">\n\t\t\t\t\t\t\t\t<i class=\"far fa-trash-alt\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<a class=\"btn btn-warning btn-sm\" href=\"#\"  data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Generate\">\n\t\t\t\t\t\t\t\t<i class=\"fas fa-check\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\n\t\t\t</div>\n\n\t\t</aside>\n\n\t\t<main class=\"col-lg-9 col-md-8 pl-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white\">Preview</div>\n\n\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\tMain\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</main>\n\n\t</div>\n</div>\n\n<div class=\"modal fade\" id=\"createTheme\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"createTheme\" aria-hidden=\"true\">\n\t<div class=\"modal-dialog modal-sm\">\n\t\t<div class=\"modal-content\">\n\t\t\t<div class=\"modal-header text-white bg-primary p-2\">\n\t\t\t\tCreate new Theme\n\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n\t\t\t\t\t<span aria-hidden=\"true\">&times;</span>\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t\t<form (ngSubmit)=\"createTheme()\">\n\t\t\t\t<div class=\"modal-body p-2\">\n\t\t\t\t\t<div class=\"form-group mb-0\">\n\t\t\t\t\t\t<label for=\"newThemeName\">Theme Name</label>\n\t\t\t\t\t\t<input type=\"text\" id=\"newThemeName\" class=\"form-control\" [(ngModel)]=\"themeName\" name=\"themeName\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"modal-footer p-2\">\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Create</button>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n</div>\n\n\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n\t<div class=\"modal-content\">\n\t\t<div class=\"modal-header text-white bg-primary p-2\">\n\t\t\tCreate new Theme\n\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"d()\">\n\t\t\t\t<span aria-hidden=\"true\">&times;</span>\n\t\t\t</button>\n\t\t</div>\n\t\t<form (ngSubmit)=\"createTheme()\">\n\t\t\t<div class=\"modal-body p-2\">\n\t\t\t\t<div class=\"form-group mb-0\">\n\t\t\t\t\t<label for=\"newThemeName\">Theme Name</label>\n\t\t\t\t\t<input type=\"text\" id=\"newThemeName\" class=\"form-control\" [(ngModel)]=\"themeName\" name=\"themeName\">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"modal-footer p-2\">\n\t\t\t\t<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" (click)=\"d('test')\">Close</button>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Create</button>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</ng-template>"
+module.exports = "<div [ngClass]=\"messageClass\" *ngIf=\"message\" class=\"alert\" role=\"alert\">\n\t{{ message }}\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n\t\t<span aria-hidden=\"true\">&times;</span>\n\t</button>\n</div>\n\n<div id=\"wrapper\" class=\"container-fluid h-100\">\n\t<div class=\"row h-100\">\n\n\t\t<aside class=\"col-lg-3 col-md-4 pr-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white d-flex align-items-center justify-content-between\">\n\t\t\t\t\t<span>Themes</span>\n\t\t\t\t\t<button (click)=\"open(content)\" class=\"btn btn-success btn-sm\" data-tooltip=\"tooltip\" data-placement=\"left\"\n\t\t\t\t\t title=\"Create\">\n\t\t\t\t\t\t<i class=\"fas fa-plus\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\n\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t<li *ngFor=\"let theme of themes\" class=\"list-group-item justify-content-between d-flex\">\n\t\t\t\t\t\t<a routerLink=\"/edit/{{ theme.id }}\">{{ theme.name }}</a>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"buildTheme(theme.id)\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Build\">\n\t\t\t\t\t\t\t\t<i class=\"fas fa-cogs\"></i>\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t<a class=\"btn btn-primary btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Edit\">\n\t\t\t\t\t\t\t\t<i class=\"fas fa-pencil-alt\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<a class=\"btn btn-success btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Copy\">\n\t\t\t\t\t\t\t\t<i class=\"far fa-copy\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<a class=\"btn btn-danger btn-sm\" (click)=\"deleteTheme(theme.id)\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Delete\">\n\t\t\t\t\t\t\t\t<i class=\"far fa-trash-alt\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<a class=\"btn btn-warning btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Generate\">\n\t\t\t\t\t\t\t\t<i class=\"fas fa-check\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\n\t\t\t</div>\n\n\t\t</aside>\n\n\t\t<main class=\"col-lg-9 col-md-8 pl-md-1 h-100\">\n\t\t\t<div class=\"card h-100\">\n\t\t\t\t<div class=\"card-header bg-primary text-white\">Preview</div>\n\n\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\tMain\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</main>\n\n\t</div>\n</div>\n\n<div class=\"modal fade\" id=\"createTheme\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"createTheme\" aria-hidden=\"true\">\n\t<div class=\"modal-dialog modal-sm\">\n\t\t<div class=\"modal-content\">\n\t\t\t<div class=\"modal-header text-white bg-primary p-2\">\n\t\t\t\tCreate new Theme\n\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n\t\t\t\t\t<span aria-hidden=\"true\">&times;</span>\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t\t<form (ngSubmit)=\"createTheme()\">\n\t\t\t\t<div class=\"modal-body p-2\">\n\t\t\t\t\t<div class=\"form-group mb-0\">\n\t\t\t\t\t\t<label for=\"newThemeName\">Theme Name</label>\n\t\t\t\t\t\t<input type=\"text\" id=\"newThemeName\" class=\"form-control\" [(ngModel)]=\"themeName\" name=\"themeName\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"modal-footer p-2\">\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Create</button>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n</div>\n\n\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n\t<div class=\"modal-content\">\n\t\t<div class=\"modal-header text-white bg-primary p-2\">\n\t\t\tCreate new Theme\n\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"d()\">\n\t\t\t\t<span aria-hidden=\"true\">&times;</span>\n\t\t\t</button>\n\t\t</div>\n\t\t<form (ngSubmit)=\"createTheme()\">\n\t\t\t<div class=\"modal-body p-2\">\n\t\t\t\t<div class=\"form-group mb-0\">\n\t\t\t\t\t<label for=\"newThemeName\">Theme Name</label>\n\t\t\t\t\t<input type=\"text\" id=\"newThemeName\" class=\"form-control\" [(ngModel)]=\"themeName\" name=\"themeName\">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"modal-footer p-2\">\n\t\t\t\t<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" (click)=\"d('test')\">Close</button>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Create</button>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</ng-template>"
 
 /***/ }),
 
@@ -274,6 +274,24 @@ var HomeComponent = /** @class */ (function () {
             .subscribe(function (data) {
             if (data.message == 'success') {
                 _this.message = 'Success! User Added.';
+                _this.messageClass = 'alert-success';
+            }
+            else {
+                _this.message = 'Error!';
+                _this.messageClass = 'alert-danger';
+            }
+        });
+    };
+    /**
+     * Delete Theme
+     */
+    HomeComponent.prototype.deleteTheme = function (id) {
+        var _this = this;
+        this.themeService.deleteTheme({ id: id })
+            .subscribe(function (data) {
+            console.log(data);
+            if (data.message == 'success') {
+                _this.message = 'Theme Deleted!';
                 _this.messageClass = 'alert-success';
             }
             else {
@@ -418,19 +436,36 @@ var ThemeService = /** @class */ (function () {
         this.apiUrl = '/api/home';
         this.buildUrl = '/api/build';
         this.createUrl = '/api/create';
+        this.deleteUrl = '/api/create';
         this.headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
     }
+    /**
+     * Get All Theme
+     */
     ThemeService.prototype.getAllThemes = function () {
         return this.http.get(this.apiUrl)
             .pipe(operators_1.catchError(this.handleError));
     };
+    /**
+     * Build Theme
+     */
     ThemeService.prototype.buildTheme = function (id) {
         return this.http.post(this.buildUrl, id, { headers: this.headers })
             .pipe(operators_1.catchError(this.handleError));
     };
+    /**
+     * Create Theme
+     */
     ThemeService.prototype.createTheme = function (name, id) {
         if (id === void 0) { id = null; }
         return this.http.post(this.createUrl, name, { headers: this.headers })
+            .pipe(operators_1.catchError(this.handleError));
+    };
+    /**
+     * Delete Theme
+     */
+    ThemeService.prototype.deleteTheme = function (id) {
+        return this.http.post(this.deleteUrl, id, { headers: this.headers })
             .pipe(operators_1.catchError(this.handleError));
     };
     ThemeService.prototype.handleError = function (error) {

@@ -13,22 +13,40 @@ export class ThemeService {
 	private apiUrl = '/api/home';
 	private buildUrl = '/api/build';
 	private createUrl = '/api/create';
+	private deleteUrl = '/api/create';
 	private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
 	constructor(private http: HttpClient) {}
 
+	/**
+	 * Get All Theme
+	 */
 	public getAllThemes(): Observable<Themes[]> {
 		return this.http.get<Themes[]>(this.apiUrl)
 						.pipe(catchError(this.handleError));
 	}
 
+	/**
+	 * Build Theme
+	 */
 	public buildTheme(id: any) {
 		return this.http.post<Themes>(this.buildUrl, id, { headers: this.headers })
 						.pipe(catchError(this.handleError));
 	}
 
+	/**
+	 * Create Theme
+	 */
 	public createTheme(name: any, id: String = null) {
 		return this.http.post<Themes>(this.createUrl, name, { headers: this.headers })
+						.pipe(catchError(this.handleError));
+	}
+
+	/**
+	 * Delete Theme
+	 */
+	public deleteTheme(id: any) {
+		return this.http.post(this.deleteUrl, id, {headers: this.headers})
 						.pipe(catchError(this.handleError));
 	}
 
