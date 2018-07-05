@@ -62,8 +62,6 @@ ncp.limit = 16;
 export default class Home {
 
     constructor() {
-        this.pathToJson = path.join('./assets/themes/themes.json');
-        //this.jsonFile = JSON.parse(fs.readFileSync(this.pathToJson, 'utf8'));
         this.pathToThemes = path.join('./assets/themes/');
     }
 
@@ -115,7 +113,7 @@ export default class Home {
     }
 
     saveJsonFile(data, callback) {
-        fs.writeFile(this.pathToJson, JSON.stringify(data), (err) => {
+        fs.writeFile(this.pathToThemes + 'themes.json', JSON.stringify(data), (err) => {
             if(err) {
                 callback(false);
             } else {
@@ -125,7 +123,7 @@ export default class Home {
     }
 
     getThemes() {
-        return JSON.parse(fs.readFileSync(this.pathToJson, 'utf8'))
+        return JSON.parse(fs.readFileSync(this.pathToThemes + 'themes.json', 'utf8'))
     }
 
 }

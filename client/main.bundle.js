@@ -232,6 +232,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var ng_bootstrap_1 = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+var toaster_js_1 = __webpack_require__("./node_modules/toaster-js/index.js");
 var theme_service_1 = __webpack_require__("./src/app/services/theme.service.ts");
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(themeService, modalService) {
@@ -259,8 +260,11 @@ var HomeComponent = /** @class */ (function () {
             else {
                 _this.modalRef.close();
                 _this.themeName = '';
-                _this.messageClass = 'alert-success';
-                _this.message = 'Theme Created';
+                toaster_js_1.configureToasts({
+                    topOrigin: 0,
+                    deleteDelay: 7000
+                });
+                new toaster_js_1.Toast('Theme Created!', toaster_js_1.Toast.TYPE_DONE);
                 _this.themes.push(data);
             }
         });

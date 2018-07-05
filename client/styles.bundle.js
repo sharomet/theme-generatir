@@ -1,5 +1,12 @@
 webpackJsonp(["styles"],{
 
+/***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./node_modules/toaster-js/default.css":
+/***/ (function(module, exports) {
+
+module.exports = ".toast {\n  position: fixed;\n  right: 0;\n  bottom: 0;\n  z-index: 10000;\n  max-width: 100%;\n  opacity: 0;\n  -webkit-transform: translate(75%, 0);\n          transform: translate(75%, 0);\n  pointer-events: none;\n  -webkit-transition: all 0.3s ease, transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);\n  -webkit-transition: all 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);\n  transition: all 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);\n  transition: all 0.3s ease, transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);\n  transition: all 0.3s ease, transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }\n  .toast.displayed {\n    opacity: 1;\n    -webkit-transform: translate(0, 0);\n            transform: translate(0, 0); }\n  .toast > .body {\n    position: relative;\n    font-size: initial;\n    margin: 0 1em 1em 1em;\n    padding: .5em;\n    word-wrap: break-word;\n    border-radius: 3px;\n    background: rgba(255, 255, 255, 0.9);\n    pointer-events: all;\n    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);\n            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }\n  .toast > .body.info {\n      background: rgba(255, 245, 195, 0.9); }\n  .toast > .body.warning {\n      background: rgba(255, 183, 99, 0.9); }\n  .toast > .body.warning > .icon {\n        color: white; }\n  .toast > .body.error {\n      color: white;\n      text-shadow: 0 0 1px black;\n      background: rgba(255, 86, 86, 0.9); }\n  .toast > .body.done {\n      background: rgba(147, 255, 157, 0.9); }\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/assets/css/font-awesome-5.css":
 /***/ (function(module, exports) {
 
@@ -483,6 +490,38 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ "./node_modules/toaster-js/default.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./node_modules/toaster-js/default.css");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../raw-loader/index.js!../postcss-loader/lib/index.js??embedded!./default.css", function() {
+			var newContent = require("!!../raw-loader/index.js!../postcss-loader/lib/index.js??embedded!./default.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ "./src/assets/css/font-awesome-5.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -551,6 +590,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./src/assets/css/font-awesome-5.css");
+__webpack_require__("./node_modules/toaster-js/default.css");
 module.exports = __webpack_require__("./src/assets/css/styles.css");
 
 

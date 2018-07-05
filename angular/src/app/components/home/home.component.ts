@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Toast, configureToasts } from 'toaster-js';
 
 import { ThemeService } from '../../services/theme.service'
 import { Themes } from '../../models/themes';
@@ -41,8 +42,11 @@ export class HomeComponent implements OnInit {
                         } else {
                           this.modalRef.close();
                           this.themeName = '';
-                          this.messageClass = 'alert-success';
-                          this.message = 'Theme Created';
+                          configureToasts({
+                            topOrigin: 0,
+                            deleteDelay: 7000
+                          });
+                          new Toast('Theme Created!', Toast.TYPE_DONE);
                           this.themes.push(data);
                         }
                      });
