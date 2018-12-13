@@ -23,8 +23,8 @@ router.post('/delete/:id', (req, res) => {
     });
 });
 
-/*router.post('/build', EditController.buildTheme);
-router.post('/create', HomeController.createTheme);
+router.post('/build', EditController.buildTheme);
+/*router.post('/create', HomeController.createTheme);
 router.post('/delete', HomeController.createTheme);*/
 
 export default router;
