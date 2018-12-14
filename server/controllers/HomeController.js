@@ -59,10 +59,10 @@ ncp.limit = 16;
 //     res.send(jsonFile);
 // }
 
-export default class Home {
+export class HomeController {
 
     constructor() {
-        this.pathToThemes = path.join('./assets/themes/');
+        this.pathToThemes = path.join(__dirname, '../assets/themes/');
     }
 
     getAllThemes() {
