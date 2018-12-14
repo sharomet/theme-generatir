@@ -5,10 +5,13 @@ import cleanCSS from 'gulp-clean-css';
 import autoprefixer from 'gulp-autoprefixer';
 import path from 'path';
 
-let pathToCss = path.join(__dirname, '../assets/themes/');
+export class EditController {
 
-exports.buildTheme = (req, res) => {
-    let build = gulp.src(pathToCss + req.body.id + '/theme.scss')
+	buildTheme(req, res) {
+		
+		let pathToThemes = path.join(__dirname, '../assets/themes/' + req.body.id);
+
+		gulp.src(pathToThemes + '/theme.scss')
 			.pipe(sass().on('error', sass.logError))
 			.pipe(concat('theme.css'))
 			.pipe(autoprefixer({
@@ -18,7 +21,8 @@ exports.buildTheme = (req, res) => {
 			.pipe(cleanCSS({
 				level: 2
 			}))
-			.pipe(gulp.dest(pathToCss + req.body.id));
+			.pipe(gulp.dest(pathToThemes));
 
-	res.send({'message' : 'success'});		
-};
+		res.send({'message' : 'success'});
+	}
+}
