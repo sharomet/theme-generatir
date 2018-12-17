@@ -25,6 +25,6 @@ export class EditController {
 			}))
 			.pipe(gulp.dest(pathToThemes));
 
-        res.send({'message' : pathToThemes});
+        res.status(200).send({'message' : 'success'});
     }
 }

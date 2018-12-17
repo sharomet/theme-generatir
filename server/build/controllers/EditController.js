@@ -25,7 +25,7 @@ var EditController = /** @class */ (function () {
             level: 2
         }))
             .pipe(gulp_1.default.dest(pathToThemes));
-        res.send({ 'message': pathToThemes });
+        res.status(200).send({ 'message': 'success' });
     };
     return EditController;
 }());

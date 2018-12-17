@@ -6,9 +6,10 @@ export class Router {
 
     public homeController: HomeController = new HomeController();
     public editController: EditController = new EditController();
+    private apiUrl = '/api/';
 
     public routes (app: any) {
-        app.get('/api/home', (res: Response) => this.homeController.getAllThemes(res));
-        app.post('/api/build', (req: Request, res: Response) => this.editController.build(req, res));
+        app.get(this.apiUrl + 'home', (req: Request, res: Response) => this.homeController.getAllThemes(req, res))
+           .post(this.apiUrl + 'build', (req: Request, res: Response) => this.editController.build(req, res));
     }
 }

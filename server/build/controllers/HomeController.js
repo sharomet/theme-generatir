@@ -9,8 +9,8 @@ var HomeController = /** @class */ (function () {
     function HomeController() {
         this.pathToThemes = path_1.default.join(__dirname, '../assets/themes/');
     }
-    HomeController.prototype.getAllThemes = function (res) {
-        res.send(this.getThemes());
+    HomeController.prototype.getAllThemes = function (req, res) {
+        res.status(200).send(this.getThemes());
     };
     HomeController.prototype.getThemes = function () {
         return JSON.parse(fs_1.default.readFileSync(this.pathToThemes + 'themes.json', 'utf8'));

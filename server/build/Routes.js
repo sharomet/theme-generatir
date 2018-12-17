@@ -5,11 +5,12 @@ var Router = /** @class */ (function () {
     function Router() {
         this.homeController = new controllers_1.HomeController();
         this.editController = new controllers_1.EditController();
+        this.apiUrl = '/api/';
     }
     Router.prototype.routes = function (app) {
         var _this = this;
-        app.get('/api/home', function (res) { return _this.homeController.getAllThemes(res); });
-        app.post('/api/build', function (req, res) { return _this.editController.build(req, res); });
+        app.get(this.apiUrl + 'home', function (req, res) { return _this.homeController.getAllThemes(req, res); })
+            .post(this.apiUrl + 'build', function (req, res) { return _this.editController.build(req, res); });
     };
     return Router;
 }());
