@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Response } from 'express'
 import path from 'path';
 import fs from 'fs';
 import guid from 'guid';
