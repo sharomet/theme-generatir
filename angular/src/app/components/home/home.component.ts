@@ -12,7 +12,7 @@ import { Themes } from '../../models/themes';
 })
 export class HomeComponent implements OnInit {
 
-  public themes: Themes[] = [];
+  public themes: Themes[];
   private messageClass;
   private message;
   private themeName;
@@ -22,12 +22,14 @@ export class HomeComponent implements OnInit {
     private themeService: ThemeService, 
     private modalService: NgbModal,
   ) {
-    this.themeService.getAllThemes().subscribe(themes => {
-			this.themes = themes;
-		});
+    this.themeService.getAllThemes().subscribe(themes => this.themes = themes);
   }
 
   ngOnInit() {
+    configureToasts({
+      topOrigin: 0,
+      deleteDelay: 7000
+    });
   }
   
   /**
@@ -42,10 +44,6 @@ export class HomeComponent implements OnInit {
                         } else {
                           this.modalRef.close();
                           this.themeName = '';
-                          configureToasts({
-                            topOrigin: 0,
-                            deleteDelay: 7000
-                          });
                           new Toast('Theme Created!', Toast.TYPE_DONE);
                           this.themes.push(data);
                         }

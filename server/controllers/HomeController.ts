@@ -2,7 +2,8 @@ import { Request, Response } from 'express'
 import path from 'path';
 import fs from 'fs';
 import guid from 'guid';
-import ncp from 'ncp';
+
+const ncp = require('ncp');
 
 export class HomeController {
 
@@ -10,6 +11,43 @@ export class HomeController {
 
     public getAllThemes(req: Request, res: Response) {
         res.status(200).send(this.getThemes());
+    }
+
+    public createTheme(req: Request, res: Response) {
+        let copyTheme = 'defaultTheme';
+        let id = guid.create();
+        let copy = false;
+        let jsonData = this.getThemes();
+
+        let theme = {
+            id: id,
+            name: req.body.name,
+            copy: copy
+        };
+
+        jsonData.push(theme);
+
+        this.saveJsonFile(jsonData, (result: any) => {
+            if(!result) {
+                res.send({'message': 'error'});
+            } 
+            ncp(this.pathToThemes + copyTheme, this.pathToThemes + id, (err:any) => {
+                if(err) {
+                    res.send({'message': 'error'});
+                }
+                res.send(theme);
+            });
+        });
+    }
+
+    public saveJsonFile(data: any, response: any) {
+        fs.writeFile(this.pathToThemes + 'themes.json', JSON.stringify(data), (err) => {
+            if(err) {
+                response(false);
+            } else {
+                response(true);
+            }
+        });
     }
 
     public getThemes() {

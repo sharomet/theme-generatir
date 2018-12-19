@@ -10,6 +10,7 @@
 
 		<aside class="col-lg-3 col-md-4 pr-md-1 h-100">
 			<div class="card h-100">
+
 				<div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
 					<span>Themes</span>
 					<button (click)="open(content)" class="btn btn-success btn-sm" data-tooltip="tooltip" data-placement="left"
@@ -18,7 +19,7 @@
 					</button>
 				</div>
 
-				<ul class="list-group list-group-flush">
+				<!-- <ul class="list-group list-group-flush" *ngIf="themes?.length > 0">
 					<li *ngFor="let theme of themes" class="list-group-item justify-content-between d-flex">
 						<a routerLink="/edit/{{ theme.id }}">{{ theme.name }}</a>
 						<div>
@@ -39,7 +40,9 @@
 							</a>
 						</div>
 					</li>
-				</ul>
+				</ul> -->
+
+				<app-theme-list [themes]="themes"></app-theme-list>
 
 			</div>
 
@@ -56,31 +59,6 @@
 			</div>
 		</main>
 
-	</div>
-</div>
-
-<div class="modal fade" id="createTheme" tabindex="-1" role="dialog" aria-labelledby="createTheme" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header text-white bg-primary p-2">
-				Create new Theme
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form (ngSubmit)="createTheme()">
-				<div class="modal-body p-2">
-					<div class="form-group mb-0">
-						<label for="newThemeName">Theme Name</label>
-						<input type="text" id="newThemeName" class="form-control" [(ngModel)]="themeName" name="themeName">
-					</div>
-				</div>
-				<div class="modal-footer p-2">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Create</button>
-				</div>
-			</form>
-		</div>
 	</div>
 </div>
 

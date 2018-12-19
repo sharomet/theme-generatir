@@ -1,20 +1,22 @@
-<ul class="list-group list-group-flush">
+<h5 class="text-center text-muted text-lg" *ngIf="themes?.length == 0">Create New Theme</h5>
+
+<ul class="list-group list-group-flush" *ngIf="themes?.length > 0">
 	<li *ngFor="let theme of themes" class="list-group-item justify-content-between d-flex">
 		<a routerLink="/edit/{{ theme.id }}">{{ theme.name }}</a>
 		<div>
-			<button class="btn btn-primary btn-sm" (click)="buildTheme(theme.id)" data-tooltip="tooltip" data-placement="left" title="Build">
+			<button class="btn btn-primary btn-sm" data-tooltip="tooltip" data-placement="left" title="Build">
 				<i class="fas fa-cogs"></i>
 			</button>
-			<a class="btn btn-primary btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Edit">
+			<a class="btn btn-primary btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Edit">
 				<i class="fas fa-pencil-alt"></i>
 			</a>
-			<a class="btn btn-success btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Copy">
+			<a class="btn btn-success btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Copy">
 				<i class="far fa-copy"></i>
 			</a>
-			<a class="btn btn-danger btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Delete">
+			<a class="btn btn-danger btn-sm"  href="#" data-tooltip="tooltip" data-placement="left" title="Delete">
 				<i class="far fa-trash-alt"></i>
 			</a>
-			<a class="btn btn-warning btn-sm" href="#"  data-tooltip="tooltip" data-placement="left" title="Generate">
+			<a class="btn btn-warning btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Generate">
 				<i class="fas fa-check"></i>
 			</a>
 		</div>
