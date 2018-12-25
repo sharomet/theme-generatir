@@ -3,7 +3,10 @@
 @import "bootstrap";
 
 @import "include/global";
-@import "include/aside";
-@import "include/main";
+
+@import "include/layout/content";
+@import "include/layout/aside";
+@import "include/layout/wrapper";
+@import "include/layout/main";
 
 @import "include/components/toast";

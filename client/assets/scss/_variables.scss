@@ -6,6 +6,9 @@ $info:                                 #428cb8;
 $warning:                              #ce864c;
 $danger:                               #c75f5f;
 
+/* Navbar */
+$navbar-padding-y:                      0;
+
 /* Cards */
 $card-spacer-y:							.4rem;
 $card-spacer-x:							.7rem;
@@ -18,3 +21,7 @@ $list-group-item-padding-x:				.7rem;
 $border-radius:                         0;
 $border-radius-lg:                      0;
 $border-radius-sm:                      0;
+
+// Buttons + Forms
+$input-btn-padding-y-sm:                .2rem;
+$input-btn-padding-x-sm:                .4rem;

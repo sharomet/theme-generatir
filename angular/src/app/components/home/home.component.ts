@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Toast, configureToasts } from 'toaster-js';
 
+import { AsideService } from '../../services/aside.service'
 import { ThemeService } from '../../services/theme.service'
 import { Themes } from '../../models/themes';
 
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private themeService: ThemeService, 
     private modalService: NgbModal,
+    private asideService: AsideService
   ) {
     this.themeService.getAllThemes().subscribe(themes => this.themes = themes);
   }

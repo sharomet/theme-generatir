@@ -5,62 +5,56 @@
 	</button>
 </div>
 
-<div id="wrapper" class="container-fluid h-100">
-	<div class="row h-100">
+<aside class="aside h-100" [ngClass]="{ 'open': asideService.open }">
+	<div class="card h-100">
 
-		<aside class="col-lg-3 col-md-4 pr-md-1 h-100">
-			<div class="card h-100">
+		<div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
+			<span>Themes</span>
+			<button (click)="open(content)" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="left"
+				title="Create">
+				<i class="fas fa-plus"></i>
+			</button>
+		</div>
 
-				<div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
-					<span>Themes</span>
-					<button (click)="open(content)" class="btn btn-success btn-sm" data-tooltip="tooltip" data-placement="left"
-					 title="Create">
-						<i class="fas fa-plus"></i>
+		<!-- <ul class="list-group list-group-flush" *ngIf="themes?.length > 0">
+			<li *ngFor="let theme of themes" class="list-group-item justify-content-between d-flex">
+				<a routerLink="/edit/{{ theme.id }}">{{ theme.name }}</a>
+				<div>
+					<button class="btn btn-primary btn-sm" (click)="buildTheme(theme.id)" data-tooltip="tooltip" data-placement="left" title="Build">
+						<i class="fas fa-cogs"></i>
 					</button>
+					<a class="btn btn-primary btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Edit">
+						<i class="fas fa-pencil-alt"></i>
+					</a>
+					<a class="btn btn-success btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Copy">
+						<i class="far fa-copy"></i>
+					</a>
+					<a class="btn btn-danger btn-sm" (click)="deleteTheme(theme.id)" href="#" data-tooltip="tooltip" data-placement="left" title="Delete">
+						<i class="far fa-trash-alt"></i>
+					</a>
+					<a class="btn btn-warning btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Generate">
+						<i class="fas fa-check"></i>
+					</a>
 				</div>
+			</li>
+		</ul> -->
 
-				<!-- <ul class="list-group list-group-flush" *ngIf="themes?.length > 0">
-					<li *ngFor="let theme of themes" class="list-group-item justify-content-between d-flex">
-						<a routerLink="/edit/{{ theme.id }}">{{ theme.name }}</a>
-						<div>
-							<button class="btn btn-primary btn-sm" (click)="buildTheme(theme.id)" data-tooltip="tooltip" data-placement="left" title="Build">
-								<i class="fas fa-cogs"></i>
-							</button>
-							<a class="btn btn-primary btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Edit">
-								<i class="fas fa-pencil-alt"></i>
-							</a>
-							<a class="btn btn-success btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Copy">
-								<i class="far fa-copy"></i>
-							</a>
-							<a class="btn btn-danger btn-sm" (click)="deleteTheme(theme.id)" href="#" data-tooltip="tooltip" data-placement="left" title="Delete">
-								<i class="far fa-trash-alt"></i>
-							</a>
-							<a class="btn btn-warning btn-sm" href="#" data-tooltip="tooltip" data-placement="left" title="Generate">
-								<i class="fas fa-check"></i>
-							</a>
-						</div>
-					</li>
-				</ul> -->
-
-				<app-theme-list [themes]="themes"></app-theme-list>
-
-			</div>
-
-		</aside>
-
-		<main class="col-lg-9 col-md-8 pl-md-1 h-100">
-			<div class="card h-100">
-				<div class="card-header bg-primary text-white">Preview</div>
-
-				<div class="card-body">
-					Main
-				</div>
-
-			</div>
-		</main>
+		<app-theme-list [themes]="themes"></app-theme-list>
 
 	</div>
-</div>
+
+</aside>
+
+<main class="main h-100">
+	<div class="card h-100">
+		<div class="card-header bg-primary text-white">Preview</div>
+
+		<div class="card-body">
+			Main
+		</div>
+
+	</div>
+</main>
 
 
 <ng-template #content let-c="close" let-d="dismiss">

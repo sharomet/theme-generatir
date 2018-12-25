@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import 'rxjs/add/operator/map';
-
 import { Themes } from '../models/themes';
 
 @Injectable()

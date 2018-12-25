@@ -7,11 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ThemeService } from './services/theme.service';
+import { AsideService } from './services/aside.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ThemeListComponent } from './components/theme-list/theme-list.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     ThemeListComponent,
     FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     NgbModule.forRoot(),
@@ -29,7 +32,8 @@ import { FooterComponent } from './components/footer/footer.component';
     
   ],
   providers: [
-    ThemeService
+    ThemeService,
+    AsideService
   ],
   bootstrap: [AppComponent]
 })
