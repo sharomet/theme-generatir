@@ -8,6 +8,7 @@ import { Themes } from '../models/themes';
 @Injectable()
 export class ThemeService {
 
+	private getThemeUrl = '/api/theme/';
 	private apiUrl = '/api/home';
 	private buildUrl = '/api/build';
 	private createUrl = '/api/create';
@@ -21,6 +22,14 @@ export class ThemeService {
 	 */
 	public getAllThemes(): Observable<Themes[]> {
 		return this.http.get<Themes[]>(this.apiUrl)
+						.pipe(catchError(this.handleError));
+	}
+
+	/**
+	 * Get theme By Id
+	 */
+	public getThemeById(id: string) {
+		return this.http.get(this.getThemeUrl + id)
 						.pipe(catchError(this.handleError));
 	}
 

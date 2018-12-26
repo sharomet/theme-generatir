@@ -37,12 +37,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+/* harmony import */ var _components_edit_edit_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/edit/edit.component */ "./src/app/components/edit/edit.component.ts");
+
 
 
 
 
 var appRoutes = [
     { path: 'dashboard', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+    { path: 'edit/:id', component: _components_edit_edit_component__WEBPACK_IMPORTED_MODULE_4__["EditComponent"] },
     { path: '**', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -139,6 +142,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_theme_list_theme_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/theme-list/theme-list.component */ "./src/app/components/theme-list/theme-list.component.ts");
 /* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/footer/footer.component */ "./src/app/components/footer/footer.component.ts");
 /* harmony import */ var _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/navbar/navbar.component */ "./src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var _components_edit_edit_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/edit/edit.component */ "./src/app/components/edit/edit.component.ts");
+/* harmony import */ var _components_aside_aside_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/aside/aside.component */ "./src/app/components/aside/aside.component.ts");
+
+
 
 
 
@@ -164,6 +171,8 @@ var AppModule = /** @class */ (function () {
                 _components_theme_list_theme_list_component__WEBPACK_IMPORTED_MODULE_11__["ThemeListComponent"],
                 _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_12__["FooterComponent"],
                 _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__["NavbarComponent"],
+                _components_edit_edit_component__WEBPACK_IMPORTED_MODULE_14__["EditComponent"],
+                _components_aside_aside_component__WEBPACK_IMPORTED_MODULE_15__["AsideComponent"],
             ],
             imports: [
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"].forRoot(),
@@ -180,6 +189,134 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/aside/aside.component.css":
+/*!******************************************************!*\
+  !*** ./src/app/components/aside/aside.component.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYXNpZGUvYXNpZGUuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/components/aside/aside.component.html":
+/*!*******************************************************!*\
+  !*** ./src/app/components/aside/aside.component.html ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<aside class=\"aside h-100\">\n\t<div class=\"card h-100\">\n\n\t\t<div class=\"card-header bg-primary text-white d-flex align-items-center justify-content-between\">\n\t\t\t<span>Themes</span>\n\t\t</div>\n\n\t</div>\n\n</aside>"
+
+/***/ }),
+
+/***/ "./src/app/components/aside/aside.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/components/aside/aside.component.ts ***!
+  \*****************************************************/
+/*! exports provided: AsideComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsideComponent", function() { return AsideComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AsideComponent = /** @class */ (function () {
+    function AsideComponent() {
+    }
+    AsideComponent.prototype.ngOnInit = function () {
+    };
+    AsideComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-aside',
+            template: __webpack_require__(/*! ./aside.component.html */ "./src/app/components/aside/aside.component.html"),
+            styles: [__webpack_require__(/*! ./aside.component.css */ "./src/app/components/aside/aside.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AsideComponent);
+    return AsideComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/edit/edit.component.css":
+/*!****************************************************!*\
+  !*** ./src/app/components/edit/edit.component.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZWRpdC9lZGl0LmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/components/edit/edit.component.html":
+/*!*****************************************************!*\
+  !*** ./src/app/components/edit/edit.component.html ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<aside class=\"aside h-100\" [ngClass]=\"{ 'open': asideService.open }\">\n\t<div class=\"card h-100\">\n\n\t\t<div class=\"card-header bg-primary text-white d-flex align-items-center justify-content-between\">\n\t\t\t<span>Theme: {{ theme?.name }}</span>\n\t\t</div>\n\n\t</div>\n\n</aside>\n\n<main class=\"main h-100\">\n\t<div class=\"card h-100\">\n\t\t<div class=\"card-header bg-primary text-white\">Preview</div>\n\n\t\t<div class=\"card-body\">\n\t\t\tMain\n\t\t</div>\n\n\t</div>\n</main>"
+
+/***/ }),
+
+/***/ "./src/app/components/edit/edit.component.ts":
+/*!***************************************************!*\
+  !*** ./src/app/components/edit/edit.component.ts ***!
+  \***************************************************/
+/*! exports provided: EditComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditComponent", function() { return EditComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_aside_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/aside.service */ "./src/app/services/aside.service.ts");
+/* harmony import */ var _services_theme_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/theme.service */ "./src/app/services/theme.service.ts");
+
+
+
+
+
+var EditComponent = /** @class */ (function () {
+    function EditComponent(asideService, route, themeService) {
+        this.asideService = asideService;
+        this.route = route;
+        this.themeService = themeService;
+    }
+    EditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) { return _this.id = params.id; });
+        this.themeService.getThemeById(this.id)
+            .subscribe(function (res) { return _this.theme = res; });
+        //console.log(this.theme.name);
+    };
+    EditComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit',
+            template: __webpack_require__(/*! ./edit.component.html */ "./src/app/components/edit/edit.component.html"),
+            styles: [__webpack_require__(/*! ./edit.component.css */ "./src/app/components/edit/edit.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_aside_service__WEBPACK_IMPORTED_MODULE_3__["AsideService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _services_theme_service__WEBPACK_IMPORTED_MODULE_4__["ThemeService"]])
+    ], EditComponent);
+    return EditComponent;
 }());
 
 
@@ -460,7 +597,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h5 class=\"text-center text-muted text-lg\" *ngIf=\"themes?.length == 0\">Create New Theme</h5>\n\n<ul class=\"list-group list-group-flush list-themes\" *ngIf=\"themes?.length > 0\">\n\t<li *ngFor=\"let theme of themes\" class=\"list-group-item justify-content-between d-flex align-items-center\">\n\t\t<a routerLink=\"/edit/{{ theme.id }}\">{{ theme.name }}</a>\n\t\t<div>\n\t\t\t<button class=\"btn btn-primary btn-sm\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Build\">\n\t\t\t\t<i class=\"fas fa-cogs\"></i>\n\t\t\t</button>\n\t\t\t<a class=\"btn btn-primary btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Edit\">\n\t\t\t\t<i class=\"fas fa-pencil-alt\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-success btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Copy\">\n\t\t\t\t<i class=\"far fa-copy\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-danger btn-sm\"  href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Delete\">\n\t\t\t\t<i class=\"far fa-trash-alt\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-warning btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Generate\">\n\t\t\t\t<i class=\"fas fa-check\"></i>\n\t\t\t</a>\n\t\t</div>\n\t</li>\n</ul>"
+module.exports = "<h5 class=\"text-center text-muted text-lg\" *ngIf=\"themes?.length == 0\">Create New Theme</h5>\n\n<ul class=\"list-group list-group-flush list-themes\" *ngIf=\"themes?.length > 0\">\n\t<li *ngFor=\"let theme of themes\" class=\"list-group-item justify-content-between d-flex align-items-center\">\n\t\t<a href=\"#\">{{ theme.name }}</a>\n\t\t<div>\n\t\t\t<a class=\"btn btn-primary btn-sm\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Edit\" routerLink=\"/edit/{{ theme.id }}\">\n\t\t\t\t<i class=\"fas fa-pencil-alt\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-success btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Copy\">\n\t\t\t\t<i class=\"far fa-copy\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-danger btn-sm\"  href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Delete\">\n\t\t\t\t<i class=\"far fa-trash-alt\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"btn btn-warning btn-sm\" href=\"#\" data-tooltip=\"tooltip\" data-placement=\"left\" title=\"Generate\">\n\t\t\t\t<i class=\"fas fa-check\"></i>\n\t\t\t</a>\n\t\t</div>\n\t</li>\n</ul>"
 
 /***/ }),
 
@@ -568,6 +705,7 @@ __webpack_require__.r(__webpack_exports__);
 var ThemeService = /** @class */ (function () {
     function ThemeService(http) {
         this.http = http;
+        this.getThemeUrl = '/api/theme/';
         this.apiUrl = '/api/home';
         this.buildUrl = '/api/build';
         this.createUrl = '/api/create';
@@ -579,6 +717,13 @@ var ThemeService = /** @class */ (function () {
      */
     ThemeService.prototype.getAllThemes = function () {
         return this.http.get(this.apiUrl)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    /**
+     * Get theme By Id
+     */
+    ThemeService.prototype.getThemeById = function (id) {
+        return this.http.get(this.getThemeUrl + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     /**

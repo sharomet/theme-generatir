@@ -14,6 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ThemeListComponent } from './components/theme-list/theme-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { EditComponent } from './components/edit/edit.component';
+import { AsideComponent } from './components/aside/aside.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ThemeListComponent,
     FooterComponent,
     NavbarComponent,
+    EditComponent,
+    AsideComponent,
   ],
   imports: [
     NgbModule.forRoot(),

@@ -14,6 +14,13 @@ var HomeController = /** @class */ (function () {
     HomeController.prototype.getAllThemes = function (req, res) {
         res.status(200).send(this.getThemes());
     };
+    HomeController.prototype.getTheme = function (req, res) {
+        var themes = this.getThemes();
+        themes.filter(function (theme) {
+            theme.id == req.body.id;
+            res.status(200).send(theme);
+        });
+    };
     HomeController.prototype.createTheme = function (req, res) {
         var _this = this;
         var copyTheme = 'defaultTheme';
