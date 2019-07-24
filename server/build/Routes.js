@@ -10,7 +10,7 @@ var Router = /** @class */ (function () {
     Router.prototype.routes = function (app) {
         var _this = this;
         app.get(this.apiUrl + 'home', function (req, res) { return _this.homeController.getAllThemes(req, res); })
-            .post(this.apiUrl + 'build', function (req, res) { return _this.editController.build(req, res); })
+            .post(this.apiUrl + 'build', function (req, res) { _this.editController.build(req, res); })
             .post(this.apiUrl + 'create', function (req, res) { return _this.homeController.createTheme(req, res); })
             .get(this.apiUrl + 'theme/:id', function (req, res) { return _this.homeController.getTheme(req, res); });
     };
