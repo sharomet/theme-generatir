@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
-    <themesSidebar />
+  <Wrapper>
+    <ThemesSidebar />
     <!-- <ul>
       <li v-for="(theme, index) in themes" :key="index">{{ theme.name }}</li>
-    </ul> -->
+    </ul>-->
     <main class="main">
       <div class="card h-100">
         <div class="card-header bg-primary">
@@ -12,12 +12,13 @@
         <div class="card-body main__content"></div>
       </div>
     </main>
-  </div>
+  </Wrapper>
 </template>
 
 <script>
 import axios from 'axios'
-import themesSidebar from '../components/themesSidebar'
+import Wrapper from '@/components/Wrapper'
+import ThemesSidebar from '@/components/ThemesSidebar'
 
 export default {
   data () {
@@ -26,7 +27,8 @@ export default {
     }
   },
   components: {
-    themesSidebar
+    ThemesSidebar,
+    Wrapper
   },
   mounted () {
     this.getAllThemes()

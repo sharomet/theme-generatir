@@ -1,8 +1,8 @@
-@import "include/fonts";
-
 @import "variables";
 
-//@import "fontawesome";
+@import "include/fonts";
+
+@import "fontawesome";
 @import "bootstrap";
 
 @import "include/functions";
@@ -13,4 +13,3 @@
 
 @import "include/layout/sidebar";
 @import "include/layout/main";
-@import "include/layout/wrapper";

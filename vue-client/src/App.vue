@@ -1,7 +1,5 @@
-<template>    
-  <div class="wrapper">
-    <router-view/>
-  </div>
+<template>
+  <router-view/>
 </template>
 
 <style lang="scss">

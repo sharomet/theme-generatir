@@ -11,18 +11,33 @@ $enable-rounded:                              	false;
 /**
  * Primary colors
  */
-$primary:										#4EA0BF;
-$light: 										#f1f1f1;
-$dark: 											#353535;
+$primary:										      #4EA0BF;
+$secondary:									      #5da7a2;
+$success:									        #57b673;
+$danger:									        #ca5454;
+$light: 										      #f1f1f1;
+$dark: 											      #353535;
 
 /**
  * Card
  */
-$card-spacer-y:                     			.5rem;
-$card-spacer-x:                     			1rem;
+$card-spacer-y:                     	.5rem;
+$card-spacer-x:                     	1rem;
+
+/**
+ * List Group
+ */
+ $list-group-item-padding-y:          .5rem;
+ $list-group-item-padding-x:          1rem;
 
 /**
  * Forms
  */
-$form-group-margin-bottom:              		.5rem;
-$label-margin-bottom:                   		.25rem;
+$form-group-margin-bottom:            .5rem;
+$label-margin-bottom:                 .25rem;
+
+/**
+ * Buttons
+ */
+ $input-btn-padding-y-sm:             .2rem;
+ /*$input-btn-padding-x-sm:             .4rem;*/
