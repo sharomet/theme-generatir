@@ -13,7 +13,7 @@ var Router = /** @class */ (function () {
             .post(config_json_1.apiUrl + 'refresh', function (req, res) { return _this.editController.refreshTheme(req, res); })
             .post(config_json_1.apiUrl + 'build', function (req, res) { return _this.editController.buildTheme(req, res); })
             .post(config_json_1.apiUrl + 'create', function (req, res) { return _this.homeController.createTheme(req, res); })
-            .get(config_json_1.apiUrl + 'theme/:id', function (req, res) { return _this.homeController.getTheme(req, res); });
+            .get(config_json_1.apiUrl + 'theme/:id', function (req, res) { return _this.editController.getThemById(req, res); });
     };
     return Router;
 }());

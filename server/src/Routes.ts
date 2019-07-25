@@ -12,6 +12,6 @@ export class Router {
            .post(apiUrl + 'refresh', (req: Request, res: Response) => this.editController.refreshTheme(req, res))
            .post(apiUrl + 'build', (req: Request, res: Response) => this.editController.buildTheme(req, res))
            .post(apiUrl + 'create', (req: Request, res: Response) => this.homeController.createTheme(req, res))
-           .get(apiUrl + 'theme/:id', (req: Request, res: Response) => this.homeController.getTheme(req, res));
+           .get(apiUrl + 'theme/:id', (req: Request, res: Response) => this.editController.getThemById(req, res));
     }
 }

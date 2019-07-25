@@ -4,22 +4,12 @@ import fs from 'fs';
 import guid from 'guid';
 const ncp = require('ncp');
 
-import { Themes } from '../models/Theme'
-
 export class HomeController  {
 
     public pathToThemes: any = path.join(__dirname, '../assets/themes/');
 
     public getAllThemes(req: Request, res: Response) {
         res.status(200).send(this.getThemes());
-    }
-
-    public getTheme(req: Request, res: Response) {
-        const themes = <Themes[]>this.getThemes();
-        themes.filter(theme => {
-            theme.id == req.body.id
-            res.status(200).send(theme);
-        });
     }
 
     public createTheme(req: Request, res: Response) {
